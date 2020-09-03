@@ -1,0 +1,59 @@
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  display: flex;
+  justify-content: $j;
+  align-items: $c;
+  flex-wrap: $w;
+}
+
+.sidebar {
+	&__body {
+		padding: 8px;
+		form {
+			@include jcw(flex-start, $c, nowrap);
+			background: #FFFFFF;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			box-sizing: border-box;
+			border-radius: 6px;
+			button {
+				background: none;
+				padding-left: 10px;
+			}
+			input {
+				margin: 8px 12px;
+			}
+		}
+		hr {
+			background: #000000;
+			opacity: 0.2;
+			height: 1px;
+			margin: 8px 0;
+		}
+		ul {
+			li {
+				a {
+					font-size: 14px;
+					line-height: 24px;
+					img {
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+	.container {
+	}
+}
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 767px) {
+	.sidebar {
+		display: none;
+	}
+}

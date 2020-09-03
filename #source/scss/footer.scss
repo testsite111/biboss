@@ -1,0 +1,126 @@
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  display: flex;
+  justify-content: $j;
+  align-items: $c;
+  flex-wrap: $w;
+}
+
+%transitions {
+	-webkit-transition: 0.1s ease-out 0.1s;
+	-moz-transition: 0.1s ease-out 0.1s;
+	-o-transition: 0.1s ease-out 0.1s;
+	transition: 0.1s ease-out 0.1s;
+}
+
+.footer {
+	background: #333333;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+	font-size: 14px;
+	line-height: 20px;
+	color: #808080;
+	padding: 40px 48px 16px;
+	a {
+		color: #808080;
+		&:hover {
+			color: #fff;
+			@extend %transitions;
+			img {
+				opacity: 1;
+				@extend %transitions;
+			}
+		}
+	}
+	img {
+		opacity: 0.5;
+	}
+	hr {
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 2px;
+		margin: 26px 0 16px; 
+	}
+	&__top {
+		@include jcw(flex-start, $c, $w);
+		div {
+			margin-left: 28px;
+			img {
+				padding-right: 12px;
+			}
+		}
+	}
+	&__logo {
+		@include jcw(space-between, $c, nowrap);
+		width: 138px;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 24px;
+		&::after {
+			content: 'БИБОСС';
+			cursor: pointer;
+			color: #fff;
+		}
+		img {
+			opacity: 1;
+		}
+	}
+	&__body {
+		@include jcw(space-between, flex-start, $w);
+		margin-top: 24px;
+		padding-right: 120px;
+		ul {
+			li {
+				margin-top: 20px;
+				&:first-of-type {
+					margin: 0;
+				}
+				b {
+					color: #fff;
+					opacity: 0.6;
+				}
+				a {
+					img {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+	&__bottom {
+		@include jcw(space-between, $c, $w);
+	}
+	&__countries {
+		@include jcw($j, $c, $w);
+		b {
+			color: #fff;
+			opacity: 0.6;
+			margin-right: 24px;
+		}
+		a {
+			margin-right: 24px;
+			img {
+				padding-right: 8px;
+			}
+		}
+	}
+	&__copy {
+		a {
+			margin-right: 24px;
+		}
+		img {
+			opacity: 1;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 767px) {
+	.footer {
+		display: none;
+	}
+}

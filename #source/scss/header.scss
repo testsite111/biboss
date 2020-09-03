@@ -1,0 +1,126 @@
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  display: flex;
+  justify-content: $j;
+  align-items: $c;
+  flex-wrap: $w;
+}
+
+.header {
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+	&__body,
+	&__left,
+	&__right {
+		@include jcw(space-between, $c, $w);
+	}
+	&__body {
+		font-size: 16px;
+		line-height: 24px;
+	}
+	&__left {
+		padding: 0 16px;
+	}
+	&__right {
+		padding: 0 8px;
+	}
+	&__logo {
+		@include jcw(space-between, $c, nowrap);
+		width: 138px;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 24px;
+		&::after {
+			content: 'БИБОСС';
+			cursor: pointer;
+		}
+	}
+	&__city {
+		margin-left: 32px;
+		li {
+			&::after {
+				content: url('/img/Vector.svg');
+				margin-left: 13px;
+				cursor: pointer;
+			}
+		}
+	}
+	&__add {
+		background: #0D870D;
+		border-radius: 6px;
+		color: #fff;
+		padding: 9px 16px;
+	}
+	&__mes {
+		padding: 0 16px;
+	}
+	&__plus {
+		@include jcw(flex-start, $c, nowrap);
+		width: 66px;
+		background: rgba(0, 0, 0, 0.2);
+		border-radius: 36px;
+		padding: 3px;
+		margin-right: 16px;
+		button {
+			@include jcw($j, $c, nowrap);
+			background: #fff;
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 20px;
+			color: #FA961E;
+			border-radius: 10px;
+			padding: 1px 6px;
+		}
+	}
+	&__login {
+		display: none;
+	}
+}
+
+.active {
+	justify-content: flex-end;
+	background: #FA961E;
+}
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 767px) {
+	.header {
+		&__body,
+		&__left,
+		&__right {
+			flex-wrap: nowrap;
+		}
+		&__left {
+			padding: 0;
+		}
+		&__logo {
+			width: auto;
+			&::after {
+				content: '';
+			}
+		}
+		&__city,
+		&__add,
+		&__mes,
+		&__ava {
+			display: none;
+		}
+		&__login {
+			display: flex;
+			margin-right: 5px;
+			&::after {
+				content: 'Войти';
+				cursor: pointer;
+				margin-left: 11px;
+			}
+			a {
+				display: flex;
+			}
+		}
+	}
+}
